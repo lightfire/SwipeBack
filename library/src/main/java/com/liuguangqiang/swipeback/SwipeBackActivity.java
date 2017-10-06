@@ -8,8 +8,10 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
 /**
+ * Edited by Kadir on 07/10/17.
  * Created by Eric on 15/3/3.
  */
+@SuppressWarnings("unused")
 public class SwipeBackActivity extends AppCompatActivity implements SwipeBackLayout.SwipeBackListener {
 
     private static final SwipeBackLayout.DragEdge DEFAULT_DRAG_EDGE = SwipeBackLayout.DragEdge.LEFT;

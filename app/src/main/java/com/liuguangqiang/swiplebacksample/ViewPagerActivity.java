@@ -3,7 +3,6 @@ package com.liuguangqiang.swiplebacksample;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.liuguangqiang.swipeback.SwipeBackActivity;
@@ -11,6 +10,7 @@ import com.liuguangqiang.swipeback.SwipeBackLayout;
 import com.liuguangqiang.swiplebacksample.adapter.TestAdapter;
 
 /**
+ * Edited by Kadir on 07/10/17.
  * Created by Eric on 15/2/27.
  */
 public class ViewPagerActivity extends SwipeBackActivity {
@@ -24,12 +24,12 @@ public class ViewPagerActivity extends SwipeBackActivity {
     }
 
     private void initViews() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_activity_viewpager);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager_demo);
+        ViewPager viewPager = findViewById(R.id.viewpager_demo);
         TestAdapter adapter = new TestAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 

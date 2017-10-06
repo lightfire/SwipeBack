@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
+ * Edited by Kadir on 07/10/17.
  * Created by Eric on 15/3/1.
  */
 public class TestFragment extends Fragment {
@@ -34,12 +35,12 @@ public class TestFragment extends Fragment {
     }
 
     private void initViews() {
-        TextView tvTitle = (TextView) getView().findViewById(R.id.tv_test);
-
-        Bundle bundle = getArguments();
-        if (bundle.containsKey(EXTRA_TITLE)) {
-            tvTitle.setText(bundle.getString(EXTRA_TITLE));
+        if(getView()!=null) {
+            TextView tvTitle = getView().findViewById(R.id.tv_test);
+            Bundle bundle = getArguments();
+            if (bundle.containsKey(EXTRA_TITLE)) {
+                tvTitle.setText(bundle.getString(EXTRA_TITLE));
+            }
         }
     }
-
 }

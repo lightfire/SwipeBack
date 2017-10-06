@@ -7,11 +7,15 @@ import com.liuguangqiang.progressbar.CircleProgressBar;
 import com.liuguangqiang.swipeback.SwipeBackLayout;
 
 /**
+ * Project : SwipeBack
+ * Edited by Kadir 07/10/17
  * Created by Eric on 15/2/27.
  */
 public class DemoActivity extends Activity {
 
     private CircleProgressBar progressBar;
+
+    @SuppressWarnings("FieldCanBeLocal")
     private SwipeBackLayout swipeBackLayout;
 
     @Override
@@ -22,11 +26,11 @@ public class DemoActivity extends Activity {
     }
 
     private void initViews() {
-        progressBar = (CircleProgressBar) findViewById(R.id.progressbar1);
-        swipeBackLayout = (SwipeBackLayout) findViewById(R.id.swipe_layout);
+        progressBar = findViewById(R.id.progressbar1);
+        swipeBackLayout = findViewById(R.id.swipe_layout);
         swipeBackLayout.setEnableFlingBack(false);
 
-        swipeBackLayout.setOnPullToBackListener(new SwipeBackLayout.SwipeBackListener() {
+        swipeBackLayout.setOnSwipeBackListener(new SwipeBackLayout.SwipeBackListener() {
             @Override
             public void onViewPositionChanged(float fractionAnchor, float fractionScreen) {
                 progressBar.setProgress((int) (progressBar.getMax() * fractionAnchor));

@@ -1,12 +1,13 @@
 package com.liuguangqiang.swiplebacksample;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+@SuppressWarnings("FieldCanBeLocal")
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnCommon;
     private Button btnListView;
@@ -43,19 +44,19 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     private void initViews() {
-        btnCommon = (Button) findViewById(R.id.btn_common);
+        btnCommon = findViewById(R.id.btn_common);
         btnCommon.setOnClickListener(this);
 
-        btnListView = (Button) findViewById(R.id.btn_ListView);
+        btnListView = findViewById(R.id.btn_ListView);
         btnListView.setOnClickListener(this);
 
-        btnDemo = (Button) findViewById(R.id.btn_demo);
+        btnDemo = findViewById(R.id.btn_demo);
         btnDemo.setOnClickListener(this);
 
-        btnViewPager = (Button) findViewById(R.id.btn_viewpager);
+        btnViewPager = findViewById(R.id.btn_viewpager);
         btnViewPager.setOnClickListener(this);
 
-        btnWebView = (Button) findViewById(R.id.btn_webview);
+        btnWebView = findViewById(R.id.btn_webview);
         btnWebView.setOnClickListener(this);
     }
 

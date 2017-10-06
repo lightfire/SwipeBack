@@ -3,8 +3,6 @@ package com.liuguangqiang.swiplebacksample;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -18,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class ListViewActivity extends SwipeBackActivity {
 
     private ListView lv;
@@ -29,7 +28,7 @@ public class ListViewActivity extends SwipeBackActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_activity_list_view);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
@@ -61,7 +60,7 @@ public class ListViewActivity extends SwipeBackActivity {
         SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),
                 data, R.layout.item_test, new String[]{"title"},
                 new int[]{R.id.tv_test});
-        lv = (ListView) this.findViewById(R.id.listview);
+        lv = this.findViewById(R.id.listview);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

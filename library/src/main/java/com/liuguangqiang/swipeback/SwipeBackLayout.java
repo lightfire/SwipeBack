@@ -16,6 +16,7 @@
 
 package com.liuguangqiang.swipeback;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.ViewCompat;
@@ -42,7 +43,9 @@ import android.widget.ScrollView;
  * </style>
  * <p/>
  * Created by Eric on 15/1/8.
+ * Edited by Kadir on 07/10/17.
  */
+@SuppressWarnings("unused")
 public class SwipeBackLayout extends ViewGroup {
 
     private static final String TAG = "SwipeBackLayout";
@@ -111,7 +114,7 @@ public class SwipeBackLayout extends ViewGroup {
     /**
      * Set the anchor of calling finish.
      *
-     * @param offset
+     * @param offset float
      */
     public void setFinishAnchor(float offset) {
         finishAnchor = offset;
@@ -122,14 +125,19 @@ public class SwipeBackLayout extends ViewGroup {
     /**
      * Whether allow to finish activity by fling the layout.
      *
-     * @param b
+     * @param b boolean
      */
-    public void setEnableFlingBack(boolean b) {
+    public void setEnableFlingBack(@SuppressWarnings("SameParameterValue") boolean b) {
         enableFlingBack = b;
     }
 
     private SwipeBackListener swipeBackListener;
 
+
+    /**
+     * Use {@link SwipeBackLayout#setOnSwipeBackListener(SwipeBackListener)}
+     * @param listener SwipeBackListener
+     */
     @Deprecated
     public void setOnPullToBackListener(SwipeBackListener listener) {
         swipeBackListener = listener;
@@ -160,6 +168,7 @@ public class SwipeBackLayout extends ViewGroup {
 
     private void chkDragable() {
         setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
@@ -222,7 +231,7 @@ public class SwipeBackLayout extends ViewGroup {
     /**
      * Find out the scrollable child view from a ViewGroup.
      *
-     * @param viewGroup
+     * @param viewGroup ViewGroup
      */
     private void findScrollView(ViewGroup viewGroup) {
         scrollChild = viewGroup;
@@ -310,9 +319,11 @@ public class SwipeBackLayout extends ViewGroup {
         } else {
             viewDragHelper.cancel();
         }
+        //noinspection ConstantConditions
         return !handled ? super.onInterceptTouchEvent(ev) : handled;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         viewDragHelper.processTouchEvent(event);
@@ -327,19 +338,19 @@ public class SwipeBackLayout extends ViewGroup {
     }
 
     public boolean canChildScrollUp() {
-        return ViewCompat.canScrollVertically(scrollChild, -1);
+        return scrollChild.canScrollVertically(-1);
     }
 
     public boolean canChildScrollDown() {
-        return ViewCompat.canScrollVertically(scrollChild, 1);
+        return scrollChild.canScrollVertically(1);
     }
 
     private boolean canChildScrollRight() {
-        return ViewCompat.canScrollHorizontally(scrollChild, -1);
+        return scrollChild.canScrollHorizontally(-1);
     }
 
     private boolean canChildScrollLeft() {
-        return ViewCompat.canScrollHorizontally(scrollChild, 1);
+        return scrollChild.canScrollHorizontally(1);
     }
 
     private void finish() {
